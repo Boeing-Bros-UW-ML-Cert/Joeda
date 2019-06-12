@@ -1,0 +1,217 @@
+[THEME MUSIC - SPEEDENZA, "BACKGROUND THEME 1"]
+Hello.   
+My name is Mohammed Aurangzeb Ahmad.
+In today's lecture, we will be focusing on unsupervised learning
+and clustering.
+Before we talk about unsupervised learning,
+it is important to make a distinction between various types of ways in which
+we can divide machine learning.
+And one of these ways is with respect to what
+is known as lazy, or instance, learning versus eager learning.
+Eager learning refers to the type of machine learning models
+which use the data to create a model.
+So think about models like SVMs, decision trees.
+In such cases, model training can be slow.
+However, once the model has been built, scoring
+is very fast, the exception to that being if there are
+features which are costly to compute.
+The representation of the data itself can
+be thought of as local hypothesis regarding the data.
+We can contrast this with lazy, or instance,
+learning where we use the data as a representation of the model itself.
+In other words, model training is non-existent, and so the runtime is 0.
+However, the flip side of that is that scoring
+can be very slow, especially if there is a large dataset which
+has a high number of dimensions.
+So with that distinction being made, so now
+we can talk about the main topic, which is supervised
+versus unsupervised learning.
+So when it comes to data, in general, it is usually easier
+to obtain unlabeled data as compared to labeled data.
+So that, just the difference between how you obtained the data,
+can also inform what kind of techniques can be applied to the data.
+So for example, there are two main types of machine learning models
+or techniques which we can define.
+So one is supervised learning, and the other one is unsupervised learning.
+Supervised learning refers to the types of models
+where data is provided with target variables,
+and the task is to learn a model that can predict labels for the unseen data.
+On the other hand, in unsupervised learning,
+the data does not come with target variables,
+and the task is to find patterns in the data.
+That said, there is a third type of machine learning technique which
+is known as semi-supervised learning.
+It can be thought of as a combination of the first two types.
+It mostly is applicable to situations where one has sparse target data.
+However, the labels are available for some
+of the instances, which can be used to infer
+target labels for the rest of the data.
+So now we address the question, what is unsupervised learning?
+So it's applicable to situations where the ground truth is missing.
+We do not know what the results are or which results are correct,
+and because of that, it's difficult to validate unsupervised learning.
+So the various proxies, which are used for validating unsupervised models
+are to define some sort of objective function for the results
+or do some external validation with domain experts.
+So in unsupervised learning, the data is not available with respect
+to the target variables.
+So because of that, it is difficult to ascertain what the correct labels are.
+However, we can still use patterns within the data
+to determine things of interest.
+And unsupervised learning can be divided into a number of sub-areas
+depending upon the object of interest.
+So for example, there are techniques like clustering, association analysis,
+anomaly detection, neural networks, latent variable models, topic models,
+PCAs, and non-negative matrix factorization.
+So in the rest of the lecture, we will cover
+some of these prominent techniques.
+So the most widely used technique is what is known as clustering.
+Clustering refers to organization of unlabeled data
+into similar groups or subsets.
+So given a collection of data where the items in the data
+are similar to one another, the question is,
+how do we determine the items or objects which are similar or dissimilar
+to one another in that collection?
+So now the question arises, why would we want to do clustering?
+So it's especially applicable to cases where
+we are working in domains where the groupings, or the "natural" groupings,
+of people or objects or items is not well understood.
+We can use clusters as data descriptors, discover "natural" groupings
+of data, and also to discover unknown categories within the data itself.
+So clustering is actually a technique which has a very long pedigree.
+So historically speaking, one of the earliest examples of clustering,
+it actually goes way back, all the way to the mid-19th century when
+a pioneering English statistician, John Snow,
+used clustering to study cholera outbreaks in England.
+So one of the earliest examples is that.
+So what he did was to collect data on cholera instances in London
+around water pumps, and using this data, he
+was able to ascertain that cholera outbreak was
+around water pumps throughout London and because of the bad quality of water
+around these pumps.
+So when we are doing clustering, there are three major concepts
+that we should be aware of.
+The first one is defining proximity measures.
+Because we are determining how similar or different objects or instances are
+to one another, we have to have a criteria for defining or determining
+similarity or difference.
+So for that, we need some sort of metrics for determining distance.
+The second one is evaluation criteria.
+So because there is no ground truth which we can ascertain,
+we have to define some sort of evaluation criteria
+to describe why one cluster or one set of clusters
+is better than another set of cluster.
+And the last one, a very important ingredient,
+is the clustering algorithm itself.
+Depending upon the problem and the problem domain,
+some clusters may be better suited with respect to different clustering
+algorithms, so on and so forth.
+Again, depending on the problem, we can also
+define different types of clusters or clustering techniques.
+So there are clustering techniques with respect
+to how we are defining or describing these clusters.
+So that could be with respect to how you partition the data.
+Are we discovering hierarchical clusters?
+Are the clusters density-based, which divide the data with respect
+to connectivity and the density of the data points.
+Are they grid-based, trying to discover some sort
+of multi-level granular structures within the data?
+A model-based, based on some hypothesis about the data in the clusters.
+They can be hard clusters or fuzzy clusters
+based on degree of assignments of membership to each cluster.
+Now we talk about each of the various ingredients needed
+to define these clusters.
+So the first one is proximity measures.
+So proximity measures can be defined with respect to a distance metric.
+So we can think of the distance metric as a function that satisfies
+the following three conditions.
+So equivalence, commutativity, and the triangle rule.
+So equivalence is that if the distance between two data points is 0,
+then that means that they are the same data points.
+Commutativity really just means that the distance between x and y
+should be equal to the distance between y and x.
+And the triangle rule comes from measuring metric spaces
+in general, which states that the distance between two points, x and y,
+is either less than or equal to the distance between xz and zy,
+where z is most likely another data point which may or may not
+be between these two data points.
+It is also very important to know some of the commonly used distance metrics.
+Some of these commonly used metrics are what are known as the Manhattan
+and the Euclidean distance.
+So most of us have come across these in other situations
+within computer science and statistics or in mathematics.
+So both of these, Manhattan distance and the Euclidean distance,
+are actually special cases of what is known as the Minkowski distance.
+So if you look at this formula, so if you substitute the value of p equals 1,
+then that's what we get, the Manhattan distance.
+And when we substitute it for two, that's
+when we get the Euclidean distance.
+For other scenarios, we have additional distance metrics.
+Another commonly used metric is what is known as the inner product space.
+The main idea behind this metric is that the angle between two vectors
+can be used as a distance metric.
+It's especially useful when clustering high dimensional data.
+Yet another commonly used metric is what is
+known as the Chebychev distance, where the idea is
+that the two vectors are different if they are
+different on any one of the attributes.
+Otherwise, they are said to be more similar to one another.
+There are additional types of vectors or, rather, metric spaces,
+which can be used to define distances for certain special types of data.
+For example, if you're dealing with string data.
+So how do we define distance between two strings?
+So in the example that we have over here,
+so now suppose if you want to compute the difference between two
+names, Carolyn and Catherine.
+So one commonly used metric is what is known as the Hamming distance, where
+the idea is that the distance is the minimum number of substitutions
+required to change one string to the other string.
+Another way to do this is that--
+suppose we have nominal values.
+So for example, in the example that we have over here,
+so along the dimension of fruits, we have apples, oranges, and bananas.
+So we can convert these into individual features
+where the presence or absence of feature will be recorded.
+So we encode these as 1s and 0s.
+Yet another way, or scenario that we encounter,
+is when dealing with categorical variables.
+So for example, there may actually be some sort of semantics
+associated with those variables.
+So those type of variables are also referred to as ordinal variables.
+So these refer to example cases where, say,
+suppose in a survey we are asking respondents
+if they agree or disagree with a certain statement, how much they like
+a product.
+So the question is that, how do we define distance between these values?
+Is the distance between saying that you strongly
+agree with something is the same as agreeing with it,
+or strongly disagreeing with it?
+And similarly, is the distance between likeness of 4 and 5
+same as between 3 and 4?
+So there are different ways to solve this problem.
+One obvious and easy way to do this is to assume
+that the intervals are the same.
+This solution does not always work.
+The other, more sound way to do this is to do some sort of factor analysis
+and define an interval space between these instances.
+Now to consider a scenario where we have data
+where the variables or the attributes that we are dealing with
+are a mixture of various types of data.
+So numeric, nominal, and ordinal variables.
+So there are different ways to address this.
+One very common way to do this is what is known as the Gower distance.
+So the idea is to normalize all variables between the range of 0 and 1.
+So depending upon the variable type, normalization
+would be done differently.
+For example, we could aggregate the data by taking
+the sum of the rescaled variables, assumed that all the features are
+equally important.
+And also, suppose you want to give different weights
+to different variables.
+So one way to do that is that we can define weight
+with respect to different variables and attributes,
+and then use that to compute distance.
+So that covers the various types of learning and the distance metrics
+that we wanted to cover.
+In the next lecture or segment, we will be covering k-means clustering.
+[THEME MUSIC PLAYING]
